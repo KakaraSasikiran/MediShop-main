@@ -3,6 +3,7 @@ import { Login } from "./Login";
 import { Orders } from "./Orders";
 import { Home } from "./home";
 import { Order } from '../interfaces/Order';
+import { Shop } from "./Shop";
 
 export class Central{
 
@@ -24,6 +25,9 @@ export class Central{
     }
     async getEnterCapsuleName(center:Order,name:string){
         await center.search_orders(name)
+    }
+    getShop(){
+        return new Shop(this.page)
     }
 
 }
