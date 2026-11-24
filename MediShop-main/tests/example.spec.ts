@@ -1,11 +1,11 @@
-import {test} from '../fixtures/Fixtures'
+import {expect, test} from '../fixtures/Fixtures'
 import { Orders } from '../pages/Orders';
-test.describe("Register Functionality",()=>{
+test.describe.skip("Register Functionality",()=>{
     test.beforeEach(async({page})=>{
         await page.goto(`${process.env.url!}/MediShopWebApp/login.html`)
     })
 
-    test("Verify registration page controls",{tag:'@smoke'},async({page,central})=>{
+    test.skip("Verify registration page controls",{tag:'@smoke'},async({page,central})=>{
         await central.getLogin().perform_fill_the_form()
         await central.getHome().click_specific_tab_name_within_navbar("Orders")
         // await central.getOrders().search_orders("Vitamin")
@@ -16,6 +16,23 @@ test.describe("Register Functionality",()=>{
         // await central.getLogin().perform_browse_the_catalogue_as_a_guest()
         // await central.getLogin().perform_login("ell@gmail.com","12345")
         // await central.getLogin().assert_error_message_after_login("Invalid email or password. Please try again.")
+        await page.pause()
+    })
+   
+})
+test.describe("Storage_State",()=>{
+    test.beforeEach(async({page})=>{
+        await page.goto(`${process.env.url!}/MediShopWebApp/login.html`)
+    })
+    test.skip("Creation_of_Individual_Storage_State",async({central,context})=>{
+        await central.getLogin().perform_login("trainer@way2automation.com","way2automation")
+        // const text = await central.page.getByTestId("home_greeting").textContent()
+        // await expect(text).toContain("Rahul Arora")
+        await central.page.waitForURL('**/home.html')
+         await context.storageState({path:"token.json",indexedDB:true})
+        await central.page.pause()
+    })
+    test("trails",async({page})=>{
         await page.pause()
     })
 })

@@ -6,7 +6,8 @@ import { Order } from '../interfaces/Order';
 
 export class Central{
 
-    constructor(private page:Page){
+    readonly page:Page
+    constructor(page:Page){
         this.page = page
     }
     getLogin(){
