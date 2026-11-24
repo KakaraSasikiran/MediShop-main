@@ -54,7 +54,7 @@ test.describe("Add_To_Cart_Functionality", () => {
   });
   test("Verify_one_catologue_product_added", async ({ page, central }) => {
     await central.getShop().clickAnyNavbar("Shop");
-    await central.getShop().add_to_cart_by_medicine_name("Aspirin 75mg",3)
+    await central.getShop().add_to_cart_by_medicine_name("Dolo 650",3)
     
     await page.pause();
   });
