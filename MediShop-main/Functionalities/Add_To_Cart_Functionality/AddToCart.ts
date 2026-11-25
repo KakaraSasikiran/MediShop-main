@@ -10,6 +10,7 @@ export class AddToCart{
     readonly state:Locator
     readonly country:Locator
     readonly delivery:Locator
+   
     constructor(page:Page){
         this.page = page
         this.full_name = page.locator("input#checkout_name_input")
@@ -20,6 +21,7 @@ export class AddToCart{
         this.pincode = page.getByTestId("checkout_pincode_input")
         this.country = page.getByTestId("checkout_country_select")
         this.delivery = page.getByTestId("checkout_notes_input")
+      
     }
     async click_Secure_Checkout(){
         await this.page.getByRole("button",{name:"Secure checkout",exact:true}).click()
@@ -34,6 +36,7 @@ export class AddToCart{
     async clickCheck(){
         await this.page.getByTestId("save_address_checkbox").check()
     }
+   
    async delivery_address(fullname:string,mobile_no:string,address:string,city:string,state:string,pin:string,country:string,delivery_details:string){
     await this.clear_and_enter_values(this.full_name,fullname)
     await this.clear_and_enter_values(this.mobile_number,mobile_no)
