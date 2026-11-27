@@ -34,7 +34,7 @@ export class AddToCart{
         await locator.selectOption(value)
     }
     async clickCheck(){
-        await this.page.getByTestId("save_address_checkbox").check()
+        await this.page.getByRole("checkbox",{name:"Save this address for future orders",exact:true}).click()
     }
    
    async delivery_address(fullname:string,mobile_no:string,address:string,city:string,state:string,pin:string,country:string,delivery_details:string){

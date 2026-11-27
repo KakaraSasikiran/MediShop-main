@@ -4,6 +4,7 @@ import { Orders } from "./Orders";
 import { Home } from "./home";
 import { Order } from '../interfaces/Order';
 import { Shop } from "./Shop";
+import { Profile } from "./Profile";
 
 export class Central{
 
@@ -28,6 +29,9 @@ export class Central{
     }
     getShop(){
         return new Shop(this.page)
+    }
+    getProfile(){
+        return new Profile(this.page)
     }
 
 }

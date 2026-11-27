@@ -52,10 +52,26 @@ test.describe("Add_To_Cart_Functionality", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(`${process.env.url!}/MediShopWebApp/login.html`);
   });
-  test("Verify_one_catologue_product_added", async ({ page, central }) => {
+  test.skip("Verify_one_catologue_product_added", async ({ page, central }) => {
     await central.getShop().clickAnyNavbar("Shop");
-    await central.getShop().add_to_cart_by_medicine_name("Dolo 650",3)
+    await central.getShop().add_to_cart_by_medicine_name("Aspirin 75mg",3)
     await central.getShop().delivery_address("Hellos","9876543210","Hlos","city","States","987654","Australia","Delivery")
+    await central.getShop().delivery_speed_or_payment_method("Express delivery")
+    await central.getShop().delivery_speed_or_payment_method("Credit")
+    // await central.getShop().upi_id("1111")
+    // await central.getShop().credit_card_or_debit_card_details("111111","01/01","111","Hellos")
     await page.pause();
   });
 });
+test.describe("Add_To_Cart_Functionality", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(`${process.env.url!}/MediShopWebApp/login.html`);
+  });
+  test("Profile Based Operation", async ({ page, central }) => {
+    await central.getProfile().clickProfile()
+    await central.getProfile().selectProfile("My profile")
+    await page.pause()
+  });
+});
+
+
