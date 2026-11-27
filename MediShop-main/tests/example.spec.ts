@@ -70,6 +70,7 @@ test.describe("Add_To_Cart_Functionality", () => {
   test("Profile Based Operation", async ({ page, central }) => {
     await central.getProfile().clickProfile()
     await central.getProfile().selectProfile("My profile")
+    
     await page.pause()
   });
 });

@@ -3,6 +3,8 @@ import { Locator, Page } from "@playwright/test";
 export class Profile {
   readonly profile_dp: Locator;
   readonly log_out:Locator
+
+
   constructor(private page: Page) {
     this.page = page;
     this.profile_dp = page.getByTestId("account_menu_button");
@@ -21,5 +23,8 @@ export class Profile {
         await this.page.getByText(d).first().click();
       }
     }
+  }
+  async edit_profile_details(full_name:string,phone_number:string,email:string,practice_name:string,role:string,about:string){
+        
   }
 }
