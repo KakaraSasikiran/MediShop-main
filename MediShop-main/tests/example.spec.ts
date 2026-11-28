@@ -68,9 +68,14 @@ test.describe("Add_To_Cart_Functionality", () => {
     await page.goto(`${process.env.url!}/MediShopWebApp/login.html`);
   });
   test("Profile Based Operation", async ({ page, central }) => {
+    await page.waitForLoadState()
     await central.getProfile().clickProfile()
     await central.getProfile().selectProfile("My profile")
-    
+    // await central.getProfile().edit_profileDetails("Ones","9876543210","Ones@gmail.com","Pracs","Nurse","Hellos,Woeld")
+    await central.getProfile().clickMyPrescription()
+    await central.getProfile().click_upload_prescription()
+    await central.getProfile().upload_prescription("one.txt","hellos","yells","2026-11-11","Notes")
+    await central.getProfile().perform_view()
     await page.pause()
   });
 });
